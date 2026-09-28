@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "synthetic_only": true,
+  "checks": [
+    "unit tests",
+    "climatology/EOF",
+    "teacher training",
+    "observer training",
+    "prediction",
+    "calibration",
+    "test evaluation",
+    "API responses"
+  ]
+}

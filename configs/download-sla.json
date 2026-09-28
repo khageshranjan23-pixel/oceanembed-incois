@@ -1,0 +1,18 @@
+{
+  "reviewed": true,
+  "provider": "copernicus",
+  "output": "data/raw/sla-pilot",
+  "request": {
+    "dataset_id": "cmems_obs-sl_glo_phy-ssh_my_allsat-l4-duacs-0.125deg_P1D",
+    "variables": [
+      "sla"
+    ],
+    "minimum_longitude": 44.5,
+    "maximum_longitude": 105.5,
+    "minimum_latitude": 4.5,
+    "maximum_latitude": 30.5,
+    "start_datetime": "2020-06-01T00:00:00",
+    "end_datetime": "2020-06-30T23:59:59",
+    "output_filename": "sla-pilot.nc"
+  }
+}

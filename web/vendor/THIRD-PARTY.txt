@@ -1,0 +1,3 @@
+Plotly.js 4.1.1: MIT license; copyright Plotly, Inc. Header retained in plotly.min.js. Source: https://cdn.plot.ly/plotly-4.1.1.min.js
+cmocean: sampled thermal/balance/amp colormaps; license included. https://matplotlib.org/cmocean/
+Natural Earth 1:110m land polygons: public domain. https://www.naturalearthdata.com/about/terms-of-use/

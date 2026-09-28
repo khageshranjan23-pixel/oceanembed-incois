@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: oceanembed-kit
+Version: 0.1.0
+Requires-Python: <3.14,>=3.11
+Requires-Dist: numpy<3,>=1.26
+Requires-Dist: scipy<2,>=1.11
+Requires-Dist: pandas<3,>=2.1
+Requires-Dist: xarray>=2024.1
+Requires-Dist: netCDF4>=1.6
+Requires-Dist: dask[array]>=2024.1
+Requires-Dist: gsw>=3.6
+Requires-Dist: torch<3,>=2.2
+Requires-Dist: scikit-learn<2,>=1.4
+Requires-Dist: fastapi<1,>=0.110
+Requires-Dist: uvicorn<1,>=0.29
+Provides-Extra: test
+Requires-Dist: pytest<10,>=8; extra == "test"
+Requires-Dist: httpx<1,>=0.27; extra == "test"
+Provides-Extra: data
+Requires-Dist: copernicusmarine<3,>=2; extra == "data"
+Requires-Dist: earthaccess<1,>=0.14; extra == "data"

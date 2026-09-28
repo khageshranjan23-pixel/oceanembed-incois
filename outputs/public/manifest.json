@@ -1,0 +1,38 @@
+{
+  "synthetic": false,
+  "mode": "retrospective",
+  "channels": [
+    "sst",
+    "sss",
+    "sla",
+    "current_u",
+    "current_v",
+    "wind_u",
+    "wind_v"
+  ],
+  "age_note": "No stale carry-forward applied; zero means same represented day, not known publication latency.",
+  "runs": [
+    {
+      "name": "runs/core",
+      "checkpoint_sha256": "31822a2dc4cdfa9bc6880989d205a24639f221644b9fc09da585d201eee03c9e",
+      "stats_sha256": "a37113ce1f8af9d041db29c22926ac9f7f5c408362c24cc3f2736c9f40802760",
+      "model_config_sha256": "fb8b92e873443c7a8ce8b0f20f653018b92fcbbfe2aae3c5c571631b68488058",
+      "observer_sha256": "42bfcfaa2fba1d7b2658a1875c2917c000d3f869b0ccadaa382f4ab71ac0e547"
+    }
+  ],
+  "drop": null,
+  "base_only": false,
+  "intervals_calibrated": true,
+  "temperature": "potential temperature referenced to 0 dbar",
+  "zero_depth": "nominal near-surface teacher level",
+  "evaluation_period": [
+    "2020-06-07",
+    "2020-06-30"
+  ],
+  "export_period": [
+    "2020-06-07",
+    "2020-06-30"
+  ],
+  "evaluation_split": "test",
+  "verified_pair_predictions": 126
+}

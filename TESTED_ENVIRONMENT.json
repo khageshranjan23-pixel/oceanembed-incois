@@ -1,0 +1,44 @@
+{
+  "python": "3.12.14",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "xarray": "2026.7.0",
+    "netCDF4": "1.7.4",
+    "gsw": "3.6.23",
+    "torch": "2.14.0+cpu",
+    "scikit-learn": "1.8.0",
+    "fastapi": "0.141.1",
+    "uvicorn": "0.54.0",
+    "pytest": "9.1.1",
+    "httpx": "0.28.1",
+    "playwright": "1.51.0"
+  },
+  "test_scope": "CPU synthetic fixtures only; no real-data accuracy or remote-provider download validation",
+  "unit_tests_passed": 17,
+  "additional_executed": [
+    "end-to-end synthetic workflow",
+    "masked SSL one epoch",
+    "ridge fitting and selection evaluation",
+    "synthetic INCOIS comparison",
+    "paired bootstrap self-comparison",
+    "JavaScript syntax check",
+    "six-view Chromium browser interaction and export checks",
+    "mobile chart resizing and screenshot inspection",
+    "bundle verification: 966 pairs, 84 days"
+  ],
+  "warnings": [
+    "netCDF import emitted a numpy binary-interface runtime warning; round-trip file/value tests passed",
+    "FastAPI TestClient emitted an httpx deprecation warning"
+  ],
+  "not_executed": [
+    "real provider authenticated downloads",
+    "multi-year real training",
+    "GPU performance",
+    "actual hosting deployment",
+    "ASCAT swath adapter",
+    "NRT availability backtest"
+  ]
+}

@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: oceanembed-incois
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "pip install -r requirements-serve.txt"
+    startCommand: "python -m uvicorn oceanembed.api:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: OCEANEMBED_RESULTS
+        value: outputs/public

@@ -1,0 +1,113 @@
+{
+  "output": "data/harmonized",
+  "sources": {
+    "sst": {
+      "reviewed": false,
+      "files": "REPLACE_WITH_LOCAL_NETCDF_PATH",
+      "variable": "REPLACE_FROM_INSPECT",
+      "expected_units": "REPLACE_FROM_INSPECT",
+      "rename": {},
+      "scale": 1,
+      "offset": -273.15,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "sss": {
+      "reviewed": false,
+      "files": "REPLACE_WITH_LOCAL_NETCDF_PATH",
+      "variable": "REPLACE_FROM_INSPECT",
+      "expected_units": "REPLACE_FROM_INSPECT",
+      "rename": {},
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "sla": {
+      "reviewed": false,
+      "files": "REPLACE_WITH_LOCAL_NETCDF_PATH",
+      "variable": "REPLACE_FROM_INSPECT",
+      "expected_units": "REPLACE_FROM_INSPECT",
+      "rename": {},
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "current_u": {
+      "reviewed": false,
+      "files": "REPLACE_WITH_LOCAL_NETCDF_PATH",
+      "variable": "REPLACE_FROM_INSPECT",
+      "expected_units": "REPLACE_FROM_INSPECT",
+      "rename": {},
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "current_v": {
+      "reviewed": false,
+      "files": "REPLACE_WITH_LOCAL_NETCDF_PATH",
+      "variable": "REPLACE_FROM_INSPECT",
+      "expected_units": "REPLACE_FROM_INSPECT",
+      "rename": {},
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "wind_u": {
+      "reviewed": false,
+      "files": "REPLACE_WITH_LOCAL_NETCDF_PATH",
+      "variable": "REPLACE_FROM_INSPECT",
+      "expected_units": "REPLACE_FROM_INSPECT",
+      "rename": {},
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 4,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "wind_v": {
+      "reviewed": false,
+      "files": "REPLACE_WITH_LOCAL_NETCDF_PATH",
+      "variable": "REPLACE_FROM_INSPECT",
+      "expected_units": "REPLACE_FROM_INSPECT",
+      "rename": {},
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 4,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "teacher": {
+      "reviewed": false,
+      "files": "REPLACE_WITH_LOCAL_NETCDF_PATH",
+      "variable": "REPLACE_FROM_INSPECT",
+      "expected_units": "REPLACE_FROM_INSPECT",
+      "rename": {},
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "bathymetry": {
+      "reviewed": false,
+      "files": "REPLACE_WITH_LOCAL_NETCDF_PATH",
+      "variable": "REPLACE_FROM_INSPECT",
+      "expected_units": "REPLACE_FROM_INSPECT",
+      "rename": {},
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.95,
+      "qc": []
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "reviewed": true,
+  "provider": "earthdata",
+  "output": "data/raw/currents-pilot",
+  "short_name": "OSCAR_L4_OC_FINAL_V2.0",
+  "bbox": [
+    44.5,
+    4.5,
+    105.5,
+    30.5
+  ],
+  "temporal": [
+    "2020-06-01",
+    "2020-06-30"
+  ],
+  "maximum_granules": 150
+}

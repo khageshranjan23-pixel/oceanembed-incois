@@ -1,0 +1,152 @@
+{
+  "output": "data/harmonized",
+  "sources": {
+    "wind_u": {
+      "reviewed": true,
+      "files": "data/raw/ccmp-pilot/*.nc",
+      "multi_file": true,
+      "variable": "uwnd",
+      "expected_units": "m s-1",
+      "rename": {
+        "latitude": "latitude",
+        "longitude": "longitude"
+      },
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 4,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "wind_v": {
+      "reviewed": true,
+      "files": "data/raw/ccmp-pilot/*.nc",
+      "multi_file": true,
+      "variable": "vwnd",
+      "expected_units": "m s-1",
+      "rename": {
+        "latitude": "latitude",
+        "longitude": "longitude"
+      },
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 4,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "teacher": {
+      "reviewed": true,
+      "files": "data/raw/glorys-pilot/glorys-pilot.nc",
+      "multi_file": false,
+      "variable": "thetao",
+      "expected_units": "degrees_C",
+      "rename": {
+        "latitude": "latitude",
+        "longitude": "longitude",
+        "depth": "depth"
+      },
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "sst": {
+      "reviewed": true,
+      "files": "data/raw/sst-pilot/*.nc",
+      "multi_file": true,
+      "variable": "analysed_sst",
+      "expected_units": "kelvin",
+      "rename": {},
+      "scale": 1,
+      "offset": -273.15,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "sla": {
+      "reviewed": true,
+      "files": "data/raw/sla-pilot/*.nc",
+      "multi_file": true,
+      "variable": "sla",
+      "expected_units": "m",
+      "rename": {},
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "sss": {
+      "reviewed": true,
+      "files": "data/raw/sss-pilot/*.nc",
+      "multi_file": true,
+      "variable": "sos",
+      "expected_units": ".001",
+      "rename": {},
+      "select_index": {
+        "depth": 0
+      },
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": []
+    },
+    "current_u": {
+      "reviewed": true,
+      "files": "data/raw/currents-pilot/*.nc",
+      "multi_file": true,
+      "variable": "u",
+      "expected_units": "m s-1",
+      "rename": {
+        "lon": "longitude",
+        "lat": "latitude"
+      },
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": [],
+      "swap_dims": {
+        "longitude": "lon",
+        "latitude": "lat"
+      }
+    },
+    "current_v": {
+      "reviewed": true,
+      "files": "data/raw/currents-pilot/*.nc",
+      "multi_file": true,
+      "variable": "v",
+      "expected_units": "m s-1",
+      "rename": {
+        "lon": "longitude",
+        "lat": "latitude"
+      },
+      "scale": 1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.8,
+      "qc": [],
+      "swap_dims": {
+        "longitude": "lon",
+        "latitude": "lat"
+      }
+    },
+    "bathymetry": {
+      "reviewed": true,
+      "files": "data/raw/bathymetry/bathymetry.nc",
+      "multi_file": false,
+      "variable": "elevation",
+      "expected_units": "m",
+      "rename": {
+        "lat": "latitude",
+        "lon": "longitude"
+      },
+      "scale": -1,
+      "offset": 0,
+      "min_samples_per_day": 1,
+      "min_support": 0.95,
+      "qc": []
+    }
+  }
+}

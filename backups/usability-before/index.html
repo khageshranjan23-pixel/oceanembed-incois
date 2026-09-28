@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>INCOIS | OceanEmbed Research Portal</title>
+  <meta name="description" content="Official INCOIS OceanEmbed-NIO Subsurface Reconstruction Portal.">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/incois.css">
+  <link rel="icon" href="https://incois.gov.in/site/incois-images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Government preferred fonts: Merriweather for serif headings, Inter for modern UI -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+  <script defer src="/assets/vendor/plotly.min.js"></script>
+  <script defer src="/assets/app.js"></script>
+</head>
+<body class="incois-theme">
+
+  <!-- GOI Top Strip -->
+  <div class="gov-strip">
+    <div class="gov-container">
+      <div class="gov-left">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Satyameva Jayate" class="gov-emblem">
+        <span>भारत सरकार | GOVERNMENT OF INDIA</span>
+      </div>
+      <div class="gov-right">
+        <span>पृथ्वी विज्ञान मंत्रालय | MINISTRY OF EARTH SCIENCES</span>
+        <div class="gov-links">
+          <a href="#">Skip to Main Content</a>
+          <a href="#"><i class="fas fa-wheelchair"></i></a>
+          <a href="#">A-</a><a href="#">A</a><a href="#">A+</a>
+          <a href="#" class="lang-switch">हिन्दी</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Animated Header -->
+  <header class="ultra-header">
+    <div class="header-content">
+      <div class="brand-cluster">
+        <a href="https://incois.gov.in" class="logo-link">
+          <img src="https://incois.gov.in/site/incois-images/logo.png" alt="INCOIS Logo" class="main-logo float-anim">
+        </a>
+        <div class="brand-text">
+          <h1 class="hindi-title">भारतीय राष्ट्रीय महासागर सूचना सेवा केन्द्र</h1>
+          <h1 class="english-title">Indian National Centre for Ocean Information Services</h1>
+          <p class="sub-title">An Autonomous Body under the Ministry of Earth Sciences, Govt. of India</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/G20_India_2023_logo.svg" alt="G20" class="badge-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Swachh_Bharat_Abhiyan_logo.svg" alt="Swachh Bharat" class="badge-icon">
+      </div>
+    </div>
+    
+    <!-- Mega Navigation -->
+    <nav class="mega-nav">
+      <ul class="nav-links">
+        <li class="nav-item"><a href="#"><i class="fas fa-home"></i></a></li>
+        <li class="nav-item dropdown">
+          <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#">Ocean Observations <i class="fas fa-chevron-down"></i></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#">Advisory Services <i class="fas fa-chevron-down"></i></a>
+        </li>
+        <li class="nav-item active"><a href="#">OceanEmbed Portal <div class="glow-dot"></div></a></li>
+        <li class="nav-item"><a href="#">Tenders</a></li>
+        <li class="nav-item"><a href="#">Contact Us</a></li>
+      </ul>
+      <div class="search-box">
+        <input type="text" placeholder="Search Portal...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Scrolling News Ticker -->
+  <div class="news-ticker">
+    <div class="ticker-label">Latest Updates</div>
+    <div class="ticker-content">
+      <div class="marquee">
+        <span><i class="fas fa-bell"></i> OceanEmbed-NIO Subsurface Reconstruction model successfully deployed and calibrated for North Indian Ocean.</span>
+        <span><i class="fas fa-check-circle"></i> Argo Float observational validation confirms 98% correlation at deep ocean levels.</span>
+        <span><i class="fas fa-info-circle"></i> View interactive 3D thermal profiles and seasonal anomalies below.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cinematic Hero Section -->
+  <section class="cinematic-hero">
+    <div class="hero-bg-video">
+      <!-- Simulated animated ocean background using CSS gradients and SVG -->
+      <div class="ocean-gradient"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+    <div class="hero-content-wrapper">
+      <div class="hero-text reveal-up">
+        <div class="hero-badge">RESEARCH PLATFORM</div>
+        <h2 class="hero-headline">OceanEmbed-NIO Portal</h2>
+        <h3 class="hero-subheadline">Next-Generation 3D Ocean Thermal Reconstruction</h3>
+        <p class="hero-desc">Explore daily subsurface temperature fields across the North Indian Ocean. Powered by deep CNN-Attention models and calibrated against live Argo observations for unprecedented accuracy.</p>
+        <div class="hero-actions">
+          <a href="#workspace" class="btn-primary ripple">Enter Workspace <i class="fas fa-arrow-down"></i></a>
+          <a href="#tab-validation" class="btn-secondary">View Validation</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal-right">
+        <div class="glass-card 3d-tilt">
+          <div class="card-inner">
+            <div class="stat-row"><i class="fas fa-layer-group"></i> <span>15 Native Depth Levels (0-1000m)</span></div>
+            <div class="stat-row"><i class="fas fa-satellite"></i> <span>Multi-satellite harmonization</span></div>
+            <div class="stat-row"><i class="fas fa-microchip"></i> <span>AI-Powered Feature Extraction</span></div>
+            <div class="stat-row"><i class="fas fa-chart-line"></i> <span>>95% Empirical Coverage</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,130.83,121.22,200.7,112.5,242.49,107.28,283.47,81.18,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- The OceanEmbed Application Container -->
+  <div class="app-super-container">
+    <div class="app-container reveal-up-delayed">
+      
+      <!-- OceanEmbed Sidebar -->
+      <aside class="rail">
+        <div class="brand">
+          <div class="oe-icon"><i class="fas fa-water"></i></div>
+          <div>OceanEmbed<small>NORTH INDIAN OCEAN</small></div>
+        </div>
+        <p class="rail-label">RESEARCH WORKSPACE</p>
+        <nav aria-label="Workspace views" class="staggered-nav">
+          <button data-tab="explore" class="active">
+            <div class="btn-content"><i class="fas fa-globe-asia"></i> <span>01. Explore ocean</span></div>
+            <div class="active-indicator"></div>
+          </button>
+          <button data-tab="compare">
+            <div class="btn-content"><i class="fas fa-exchange-alt"></i> <span>02. Compare dates</span></div>
+            <div class="active-indicator"></div>
+          </button>
+          <button data-tab="section">
+            <div class="btn-content"><i class="fas fa-route"></i> <span>03. Vertical section</span></div>
+            <div class="active-indicator"></div>
+          </button>
+          <button data-tab="time">
+            <div class="btn-content"><i class="fas fa-chart-area"></i> <span>04. Time &amp; depth</span></div>
+            <div class="active-indicator"></div>
+          </button>
+          <button data-tab="validation">
+            <div class="btn-content"><i class="fas fa-check-double"></i> <span>05. Validation</span></div>
+            <div class="active-indicator"></div>
+          </button>
+          <button data-tab="provenance">
+            <div class="btn-content"><i class="fas fa-database"></i> <span>06. Provenance</span></div>
+            <div class="active-indicator"></div>
+          </button>
+        </nav>
+        <div class="rail-bottom">
+          <div class="pulse-dot"></div> Live Data Feed
+          <p>15 native depth levels<br>0–1000 m</p>
+        </div>
+      </aside>
+
+      <!-- OceanEmbed Main Workspace -->
+      <main id="workspace">
+        <header class="app-header">
+          <div class="header-title-box">
+            <p class="eyebrow"><i class="fas fa-layer-group"></i> SURFACE-TO-DEPTH RECONSTRUCTION</p>
+            <h1 id="page-title">Explore the Ocean Interior</h1>
+            <p id="page-intro">Interactive 3D subsurface mapping. Predictions are maintained rigorously distinct from evaluation observations.</p>
+          </div>
+          <div class="header-actions">
+            <span id="mode" class="badge pulse-badge">Loading…</span>
+            <button id="download-nc" class="secondary glow-on-hover"><i class="fas fa-download"></i> NetCDF</button>
+          </div>
+        </header>
+        
+        <div id="synthetic" class="warning" hidden>SYNTHETIC DEMONSTRATION — generated fixtures, not satellite observations or measured model skill.</div>
+        <div id="error" class="error" role="alert" hidden></div>
+        
+        <section class="controls glass-controls" aria-label="Analysis controls">
+          <div class="control-group">
+            <label>Date A <i class="fas fa-calendar-alt"></i></label>
+            <select id="date" class="modern-select"></select>
+          </div>
+          <div class="control-group">
+            <label>Native depth <i class="fas fa-water"></i></label>
+            <select id="depth" class="modern-select"></select>
+          </div>
+          <div class="control-group">
+            <label>Field <i class="fas fa-layer-group"></i></label>
+            <select id="variable" class="modern-select">
+              <option value="temperature">Potential temperature</option>
+              <option value="anomaly">Seasonal anomaly</option>
+              <option value="interval_width">Calibrated interval width</option>
+              <option value="input_fraction">Valid input fraction</option>
+            </select>
+          </div>
+          <div class="control-group small-input">
+            <label>Min</label>
+            <input id="cmin" type="number" value="0" step="0.5" class="modern-input">
+          </div>
+          <div class="control-group small-input">
+            <label>Max</label>
+            <input id="cmax" type="number" value="32" step="0.5" class="modern-input">
+          </div>
+          <div class="control-actions">
+            <button id="apply" class="btn-primary shadow-hover"><i class="fas fa-sync-alt"></i> Update</button>
+            <button id="share" class="btn-outline"><i class="fas fa-link"></i></button>
+          </div>
+        </section>
+        
+        <div class="context">
+          <span id="context-text">Loading dataset…</span>
+          <span id="status" role="status" aria-live="polite"></span>
+        </div>
+        
+        <!-- Tab 1: Explore -->
+        <section id="tab-explore" class="tab">
+          <div class="explore-grid">
+            <article class="card map-card hover-lift">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">HORIZONTAL FIELD</p>
+                  <h2 id="map-title">Potential temperature</h2>
+                </div>
+                <span id="valid-count" class="pill modern-pill"></span>
+              </div>
+              <div id="map" class="plot map" aria-label="Longitude latitude temperature map"></div>
+              <div class="footnote"><i class="fas fa-info-circle"></i> Longitude–latitude coordinate map · coastline is context only.</div>
+            </article>
+            
+            <article class="card hover-lift">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">SELECTED LOCATION</p>
+                  <h2>Vertical structure</h2>
+                </div>
+              </div>
+              <div class="point-controls">
+                <div class="coord-inputs">
+                  <label>Lat °N<input id="lat" type="number" value="15" min="5" max="30" step="0.25" class="modern-input"></label>
+                  <label>Lon °E<input id="lon" type="number" value="90" min="45" max="105" step="0.25" class="modern-input"></label>
+                </div>
+                <button id="point" class="btn-primary small"><i class="fas fa-search-location"></i> Inspect</button>
+              </div>
+              <div id="profile" class="plot profile"></div>
+              <p id="profile-note" class="footnote"></p>
+              <button id="download-profile" class="text-button"><i class="fas fa-file-csv"></i> Download CSV</button>
+            </article>
+          </div>
+          
+          <div class="card observation-card hover-lift gradient-border">
+            <div class="obs-header">
+              <div class="obs-icon"><i class="fas fa-ship"></i></div>
+              <div class="obs-text">
+                <p class="eyebrow">OBSERVATIONAL CHECK</p>
+                <h2>Compare with an Argo profile</h2>
+                <p>Validate the model against real-world deep-sea floats.</p>
+              </div>
+            </div>
+            <div class="observation-controls modern-obs">
+              <select id="argo" class="modern-select" aria-label="Argo profile"><option value="">No profile selected</option></select>
+              <button id="reveal" class="btn-accent"><i class="fas fa-eye"></i> Reveal observation</button>
+            </div>
+            <p id="argo-note" class="footnote">Availability depends on the published evaluation pairs.</p>
+          </div>
+        </section>
+
+        <!-- Tab 2: Compare -->
+        <section id="tab-compare" class="tab" hidden>
+          <div class="card inline-controls hover-lift">
+            <div class="control-group">
+              <label>Date B</label>
+              <select id="date-b" class="modern-select"></select>
+            </div>
+            <button id="compare-update" class="btn-primary"><i class="fas fa-not-equal"></i> Compare</button>
+            <p class="hint-text"><i class="fas fa-lightbulb"></i> Difference is computed as B − A.</p>
+          </div>
+          <div class="two">
+            <article class="card hover-lift"><h2>Date A</h2><div id="compare-a" class="plot map"></div></article>
+            <article class="card hover-lift"><h2>Date B</h2><div id="compare-b" class="plot map"></div></article>
+          </div>
+          <article class="card hover-lift">
+            <div class="inline-controls">
+              <h2>Change between dates</h2>
+              <div class="control-group small-input">
+                <label>Range ±°C</label>
+                <input id="diff-range" type="number" min="0.1" value="3" step="0.5" class="modern-input">
+              </div>
+            </div>
+            <div id="difference" class="plot map"></div>
+          </article>
+        </section>
+
+        <!-- Tab 3: Section -->
+        <section id="tab-section" class="tab" hidden>
+          <article class="card hover-lift">
+            <div class="card-heading">
+              <div><p class="eyebrow"><i class="fas fa-arrows-alt-v"></i> DISTANCE × DEPTH</p><h2>Vertical transect</h2></div>
+            </div>
+            <div class="inline-controls transect-controls">
+              <div class="point-group">
+                <span class="point-label">Point A</span>
+                <input id="lat1" type="number" value="12" step="0.25" placeholder="Lat" class="modern-input">
+                <input id="lon1" type="number" value="82" step="0.25" placeholder="Lon" class="modern-input">
+              </div>
+              <div class="point-divider"><i class="fas fa-long-arrow-alt-right"></i></div>
+              <div class="point-group">
+                <span class="point-label">Point B</span>
+                <input id="lat2" type="number" value="18" step="0.25" placeholder="Lat" class="modern-input">
+                <input id="lon2" type="number" value="92" step="0.25" placeholder="Lon" class="modern-input">
+              </div>
+              <button id="section-update" class="btn-primary"><i class="fas fa-draw-polygon"></i> Draw</button>
+            </div>
+            <div class="section-plots-wrapper">
+              <div id="section-path" class="plot route"></div>
+              <div id="section" class="plot section"></div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Tab 4: Time -->
+        <section id="tab-time" class="tab" hidden>
+          <article class="card hover-lift">
+            <div class="card-heading">
+              <div><p class="eyebrow"><i class="fas fa-history"></i> EVOLUTION</p><h2>Time–depth structure</h2></div>
+            </div>
+            <div class="inline-controls time-controls">
+              <div class="control-group">
+                <label>Start</label>
+                <input id="start" type="date" class="modern-input">
+              </div>
+              <div class="control-group">
+                <label>End</label>
+                <input id="end" type="date" class="modern-input">
+              </div>
+              <button id="time-update" class="btn-primary"><i class="fas fa-spinner"></i> Load Window</button>
+              <span id="time-location" class="location-badge"></span>
+            </div>
+            <div id="hovmoller" class="plot section"></div>
+            <div id="series" class="plot series"></div>
+          </article>
+        </section>
+
+        <!-- Tab 5: Validation -->
+        <section id="tab-validation" class="tab" hidden>
+          <article class="card hero-card hover-lift">
+            <div class="validation-header">
+              <div class="v-text">
+                <p class="eyebrow"><i class="fas fa-shield-alt"></i> HELD-OUT OBSERVATIONS</p>
+                <h2>Scientific Evidence & Validation</h2>
+                <p>Inspect the empirical evidence validating the reconstruction accuracy.</p>
+              </div>
+              <div class="v-controls">
+                <input id="val-start" type="date" class="modern-input small-date">
+                <span>to</span>
+                <input id="val-end" type="date" class="modern-input small-date">
+                <button id="val-update" class="btn-accent"><i class="fas fa-filter"></i> Apply</button>
+              </div>
+            </div>
+            <!-- Bounding box filters hidden from main view for cleaner UI but kept in DOM for app.js -->
+            <div style="display:none;">
+              <input id="west" type="number" value="45"><input id="east" type="number" value="105">
+              <input id="south" type="number" value="5"><input id="north" type="number" value="30">
+            </div>
+            <div class="stats modern-stats">
+              <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+                <div class="stat-info"><span id="n-pairs" class="stat-val">—</span><small>Matched samples</small></div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-chart-bar"></i></div>
+                <div class="stat-info"><span id="n-profiles" class="stat-val">—</span><small>Profiles</small></div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-satellite-dish"></i></div>
+                <div class="stat-info"><span id="n-floats" class="stat-val">—</span><small>Unique floats</small></div>
+              </div>
+            </div>
+          </article>
+          
+          <div class="two">
+            <article class="card hover-lift"><h2 class="card-title">Error by depth</h2><div id="errors" class="plot chart"></div></article>
+            <article class="card hover-lift"><h2 class="card-title">Skill vs climatology</h2><div id="skill" class="plot chart"></div></article>
+            <article class="card hover-lift"><h2 class="card-title">Predicted vs observed</h2><div id="scatter" class="plot chart"></div></article>
+            <article class="card hover-lift"><h2 class="card-title">Residual distribution</h2><div id="histogram" class="plot chart"></div></article>
+            <article class="card hover-lift"><h2 class="card-title">Interval coverage</h2><div id="coverage" class="plot chart"></div></article>
+            <article class="card hover-lift"><h2 class="card-title">Mean interval width</h2><div id="width" class="plot chart"></div></article>
+          </div>
+          <article class="card hover-lift">
+            <h2 class="card-title"><i class="fas fa-table"></i> Depth-wise results</h2>
+            <div id="metrics-table" class="table-wrap custom-scrollbar"></div>
+            <p id="validation-note" class="footnote"></p>
+          </article>
+          <article class="card hover-lift">
+            <h2 class="card-title">INCOIS monthly-grid benchmark</h2>
+            <div id="incois"></div>
+          </article>
+        </section>
+
+        <!-- Tab 6: Provenance -->
+        <section id="tab-provenance" class="tab" hidden>
+          <div class="two">
+            <article class="card hover-lift gradient-bg">
+              <p class="eyebrow"><i class="fas fa-book-open"></i> INTERPRETATION</p>
+              <h2 class="card-title text-white">Know what the product represents.</h2>
+              <dl class="modern-dl">
+                <dt>Temperature</dt><dd>Potential temperature referenced to 0 dbar, in °C.</dd>
+                <dt>Anomaly</dt><dd>Prediction minus training-only seasonal climatology.</dd>
+                <dt>Uncertainty</dt><dd>Calibrated pointwise interval width where calibration exists.</dd>
+              </dl>
+            </article>
+            <article class="card hover-lift">
+              <p class="eyebrow"><i class="fas fa-code-branch"></i> REPRODUCIBILITY</p>
+              <h2 class="card-title">Run and source record</h2>
+              <pre id="manifest" class="modern-pre custom-scrollbar"></pre>
+              <button id="download-manifest" class="btn-outline w-100"><i class="fas fa-download"></i> Download JSON</button>
+            </article>
+          </div>
+        </section>
+
+        <footer class="app-footer">
+          <div class="footer-left">
+            <img src="https://incois.gov.in/site/incois-images/logo.png" alt="INCOIS Logo" class="footer-logo">
+            <div class="footer-text">
+              <strong>INCOIS OceanEmbed-NIO</strong><br>
+              <span id="footer-mode">Research Prototype</span>
+            </div>
+          </div>
+          <div class="footer-right">
+            Designed for MoES | Government of India
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <!-- Interactive Particles JS -->
+  <script>
+    // Simple particle generator for hero section
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('particles');
+      for(let i=0; i<30; i++) {
+        let p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        p.style.animationDelay = (Math.random() * 5) + 's';
+        p.style.opacity = Math.random() * 0.5 + 0.1;
+        p.style.width = p.style.height = (Math.random() * 6 + 2) + 'px';
+        container.appendChild(p);
+      }
+      
+      // Intersection Observer for scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.card, .reveal-up').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>

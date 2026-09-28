@@ -1,0 +1,17 @@
+{
+  "reviewed": true,
+  "provider": "earthdata",
+  "output": "data/raw/ccmp-pilot",
+  "short_name": "CCMP_WINDS_10M6HR_L4_V3.1",
+  "bbox": [
+    44.5,
+    4.5,
+    105.5,
+    30.5
+  ],
+  "temporal": [
+    "2020-06-01",
+    "2020-06-30"
+  ],
+  "maximum_granules": 150
+}
