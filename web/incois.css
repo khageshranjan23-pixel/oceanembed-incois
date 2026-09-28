@@ -124,6 +124,59 @@ h1, h2, h3, .eyebrow { font-family: 'Merriweather', serif; }
   background: transparent; border: none; color: white; cursor: pointer;
 }
 
+/* SIH Team Banner */
+/* SIH Team Banner - Elegant Pill Design */
+.sih-banner {
+  background-color: transparent;
+  padding: 8px 0; /* Reduced vertical padding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sih-banner-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #fff4e6 0%, #ffe5c4 100%); /* Highlighting amber bg */
+  padding: 5px 25px; /* Reduced vertical width of the pill */
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(242, 101, 34, 0.15), inset 0 1px 0 rgba(255,255,255,0.8);
+  border: 1px solid rgba(242, 101, 34, 0.2);
+}
+.sih-title {
+  font-family: 'Merriweather', serif;
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--incois-blue);
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+.sih-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.sih-highlight {
+  font-weight: 800;
+  color: #d84b04; /* Darker orange for contrast on the light orange bg */
+  margin-left: 8px;
+  font-size: 0.9rem;
+  text-transform: none;
+}
+.sih-divider {
+  height: 16px;
+  width: 2px;
+  background-color: rgba(242, 101, 34, 0.3);
+  border-radius: 2px;
+}
+
 /* News Ticker */
 .news-ticker {
   display: flex; background: #fff; border-bottom: 1px solid #ddd; font-size: 0.85rem;
