@@ -63,6 +63,24 @@ h1, h2, h3, .eyebrow { font-family: 'Merriweather', serif; }
 .hindi-title { font-weight: 900; }
 .english-title { font-weight: 700; margin-top: 4px !important; }
 .sub-title { margin: 4px 0 0 0; font-size: 0.85rem; color: #666; font-family: 'Inter', sans-serif; }
+
+/* Project Logo */
+.project-logo-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.project-logo {
+  height: 65px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+.project-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 12px rgba(0, 59, 109, 0.2));
+}
+
 .header-badges { display: flex; gap: 15px; }
 .badge-icon { height: 45px; }
 
