@@ -6,7 +6,7 @@
   <title>INCOIS | OceanEmbed Research Portal</title>
   <meta name="description" content="Official INCOIS OceanEmbed-NIO Subsurface Reconstruction Portal.">
   <link rel="stylesheet" href="/assets/style.css">
-  <link rel="stylesheet" href="/assets/incois.css?v=sih14">
+  <link rel="stylesheet" href="/assets/incois.css?v=sih15">
   <link rel="icon" href="https://incois.gov.in/site/incois-images/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <!-- Government preferred fonts: Merriweather for serif headings, Inter for modern UI -->
@@ -245,8 +245,8 @@
               <p class="eyebrow" style="margin-bottom: 10px;">SELECTED LOCATION</p>
               <div class="point-controls" style="margin: 0;">
                 <div class="coord-inputs">
-                  <label>Lat °N<input id="lat" type="number" value="15" min="5" max="30" step="any" class="modern-input"></label>
-                  <label>Lon °E<input id="lon" type="number" value="90" min="45" max="105" step="any" class="modern-input"></label>
+                  <label>Lat °N<input id="lat" type="number" value="15" min="5" max="30" step="0.25" class="modern-input"></label>
+                  <label>Lon °E<input id="lon" type="number" value="90" min="45" max="105" step="0.25" class="modern-input"></label>
                 </div>
                 <button id="point" class="btn-primary small"><i class="fas fa-search-location"></i> Show this location</button>
               </div>
@@ -330,14 +330,14 @@
             <div class="inline-controls transect-controls">
               <div class="point-group">
                 <span class="point-label">Point A</span>
-                <input id="lat1" type="number" value="12" step="any" placeholder="Lat" class="modern-input">
-                <input id="lon1" type="number" value="82" step="any" placeholder="Lon" class="modern-input">
+                <input id="lat1" type="number" value="12" step="0.25" placeholder="Lat" class="modern-input">
+                <input id="lon1" type="number" value="82" step="0.25" placeholder="Lon" class="modern-input">
               </div>
               <div class="point-divider"><i class="fas fa-long-arrow-alt-right"></i></div>
               <div class="point-group">
                 <span class="point-label">Point B</span>
-                <input id="lat2" type="number" value="18" step="any" placeholder="Lat" class="modern-input">
-                <input id="lon2" type="number" value="92" step="any" placeholder="Lon" class="modern-input">
+                <input id="lat2" type="number" value="18" step="0.25" placeholder="Lat" class="modern-input">
+                <input id="lon2" type="number" value="92" step="0.25" placeholder="Lon" class="modern-input">
               </div>
               <button id="section-update" class="btn-primary"><i class="fas fa-draw-polygon"></i> Show cross-section</button>
             </div>

@@ -59,8 +59,9 @@ function updateViewGuidance(tab){
  for(const id of ['start','end','val-start','val-end']){$(id).min=caps.dates[0];$(id).max=caps.dates.at(-1)}
 }
 function syncLocationPresets(){const v=`${Number($('lat').value)},${Number($('lon').value)}`;for(const id of ['location-preset','time-place'])$(id).value=[...$(id).options].some(o=>o.value===v)?v:'custom'}
-function validateViewSelection(){if(currentTab==='time'){if(!$('start').value||!$('end').value||$('start').value>$('end').value)throw Error('Choose a start date on or before the end date.');for(const [id,target] of [['time-lat','lat'],['time-lon','lon']]){if(!$(id).value||!$(id).checkValidity())throw Error('Enter a latitude from 5 to 30°N and a longitude from 45 to 105°E.');$(target).value=$(id).value}}
+function invalid(id){const v=Number($(id).value),isLat=id.includes('lat');return !$(id).value||isNaN(v)||v<(isLat?5:45)||v>(isLat?30:105)}
+function validateViewSelection(){if(currentTab==='time'){if(!$('start').value||!$('end').value||$('start').value>$('end').value)throw Error('Choose a start date on or before the end date.');for(const [id,target] of [['time-lat','lat'],['time-lon','lon']]){if(invalid(id))throw Error('Enter a latitude from 5 to 30°N and a longitude from 45 to 105°E.');$(target).value=$(id).value}}
  if(currentTab==='validation'&&(!$('val-start').value||!$('val-end').value||$('val-start').value>$('val-end').value))throw Error('Choose a validation start date on or before the end date.');
- const ids=currentTab==='section'?['lat1','lon1','lat2','lon2']:currentTab==='explore'?['lat','lon']:[];for(const id of ids)if(!$(id).value||!$(id).checkValidity())throw Error('Enter coordinates inside the dataset: latitude 5–30°N and longitude 45–105°E.');
+ const ids=currentTab==='section'?['lat1','lon1','lat2','lon2']:currentTab==='explore'?['lat','lon']:[];for(const id of ids)if(invalid(id))throw Error('Enter coordinates inside the dataset: latitude 5–30°N and longitude 45–105°E.');
  fieldHelp.textContent=fieldGuides[$('variable').value];
 }
