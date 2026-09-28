@@ -312,6 +312,13 @@ body > .rail, body > #workspace { display: none; } /* Hide old root layout */
   transition: all 0.3s; box-shadow: 0 4px 15px rgba(242, 101, 34, 0.3);
 }
 .btn-primary:hover { background: #e05310; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(242, 101, 34, 0.4); }
+
+.btn-teal {
+  background: #087e83; color: white; border: none; padding: 10px 24px;
+  border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;
+  transition: all 0.3s; box-shadow: 0 4px 15px rgba(8, 126, 131, 0.3);
+}
+.btn-teal:hover { background: #06666a; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(8, 126, 131, 0.4); }
 .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 10px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; backdrop-filter: blur(5px); }
 .btn-secondary:hover { background: white; color: var(--incois-blue); }
 .btn-outline { background: transparent; border: 1px solid #cbd5e0; color: #4a5568; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; }

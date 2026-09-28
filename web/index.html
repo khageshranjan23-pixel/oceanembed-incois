@@ -6,7 +6,7 @@
   <title>INCOIS | OceanEmbed Research Portal</title>
   <meta name="description" content="Official INCOIS OceanEmbed-NIO Subsurface Reconstruction Portal.">
   <link rel="stylesheet" href="/assets/style.css">
-  <link rel="stylesheet" href="/assets/incois.css?v=sih8">
+  <link rel="stylesheet" href="/assets/incois.css?v=sih14">
   <link rel="icon" href="https://incois.gov.in/site/incois-images/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <!-- Government preferred fonts: Merriweather for serif headings, Inter for modern UI -->
@@ -236,54 +236,63 @@
         
         <!-- Tab 1: Explore -->
         <section id="tab-explore" class="tab">
-          <div class="explore-grid">
-            <article class="card map-card hover-lift">
-              <div class="card-heading">
-                <div>
-                  <p class="eyebrow">HORIZONTAL FIELD</p>
-                  <h2 id="map-title">Potential temperature</h2>
-                </div>
-                <span id="valid-count" class="pill modern-pill"></span>
-              </div>
-              <div id="map" class="plot map" aria-label="Longitude latitude temperature map"></div>
-              <div class="footnote"><i class="fas fa-info-circle"></i> Longitude–latitude coordinate map · coastline is context only.</div>
-            </article>
+          
+          <!-- Unified Controls Bar -->
+          <div class="card hover-lift" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end;">
             
-            <article class="card hover-lift">
-              <div class="card-heading">
-                <div>
-                  <p class="eyebrow">SELECTED LOCATION</p>
-                  <h2>Temperature at different depths</h2>
-                </div>
-              </div>
-              <div class="point-controls">
+            <!-- Location Controls -->
+            <div style="flex: 1; min-width: 320px;">
+              <p class="eyebrow" style="margin-bottom: 10px;">SELECTED LOCATION</p>
+              <div class="point-controls" style="margin: 0;">
                 <div class="coord-inputs">
-                  <label>Lat °N<input id="lat" type="number" value="15" min="5" max="30" step="0.25" class="modern-input"></label>
-                  <label>Lon °E<input id="lon" type="number" value="90" min="45" max="105" step="0.25" class="modern-input"></label>
+                  <label>Lat °N<input id="lat" type="number" value="15" min="5" max="30" step="any" class="modern-input"></label>
+                  <label>Lon °E<input id="lon" type="number" value="90" min="45" max="105" step="any" class="modern-input"></label>
                 </div>
                 <button id="point" class="btn-primary small"><i class="fas fa-search-location"></i> Show this location</button>
               </div>
-              <div id="profile" class="plot profile"></div>
-              <p id="profile-note" class="footnote"></p>
-              <button id="download-profile" class="text-button"><i class="fas fa-file-csv"></i> Download this profile (CSV)</button>
-            </article>
+            </div>
+
+            <!-- Observational Check Controls -->
+            <div style="flex: 1; min-width: 320px; padding-left: 20px; border-left: 1px solid #eaedf3;">
+              <p class="eyebrow" style="margin-bottom: 10px;"><i class="fas fa-ship" style="color: #d84b04; margin-right: 4px;"></i> OBSERVATIONAL CHECK (ARGO)</p>
+              <p class="footnote" style="margin-top: -6px; margin-bottom: 10px; line-height: 1.4;">Argo floats measure underwater temperature. Choose a published float profile, then show its measurements on the location chart above.</p>
+              <div class="observation-controls modern-obs" style="display: flex; gap: 10px; align-items: center; margin: 0;">
+                <select id="argo" class="modern-select" style="flex: 1;" aria-label="Argo profile"><option value="">No profile selected</option></select>
+                <button id="reveal" class="btn-accent small"><i class="fas fa-eye"></i> Show</button>
+              </div>
+              <p id="argo-note" class="footnote" style="margin-top: 8px;">Availability depends on the published evaluation pairs.</p>
+            </div>
+            
           </div>
+
+          <!-- Full Width Map -->
+          <article class="card map-card hover-lift" style="margin-bottom: 20px;">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">HORIZONTAL FIELD</p>
+                <h2 id="map-title">Potential temperature</h2>
+              </div>
+              <span id="valid-count" class="pill modern-pill"></span>
+            </div>
+            <div id="map" class="plot map" aria-label="Longitude latitude temperature map" style="width: 100%; height: 500px;"></div>
+            <div class="footnote"><i class="fas fa-info-circle"></i> Longitude–latitude coordinate map · coastline is context only.</div>
+          </article>
           
-          <div class="card observation-card hover-lift gradient-border">
-            <div class="obs-header">
-              <div class="obs-icon"><i class="fas fa-ship"></i></div>
-              <div class="obs-text">
-                <p class="eyebrow">OBSERVATIONAL CHECK</p>
-                <h2>Compare with an Argo profile</h2>
-                <p>Argo floats measure underwater temperature. Choose a published float profile, then show its measurements on the location chart above.</p>
+          <!-- Full Width Profile Graph -->
+          <article class="card hover-lift">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">SELECTED LOCATION</p>
+                <h2>Temperature at different depths</h2>
               </div>
             </div>
-            <div class="observation-controls modern-obs">
-              <select id="argo" class="modern-select" aria-label="Argo profile"><option value="">No profile selected</option></select>
-              <button id="reveal" class="btn-accent"><i class="fas fa-eye"></i> Show measured temperatures</button>
+            <div id="profile" class="plot profile" style="width: 100%; height: 600px;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+              <p id="profile-note" class="footnote" style="margin: 0;"></p>
+              <button id="download-profile" class="btn-teal shadow-hover" style="border: none; padding: 10px 20px; font-weight: bold; display: flex; align-items: center; gap: 8px;"><i class="fas fa-file-csv" style="font-size: 1.2rem;"></i> Download this profile (CSV)</button>
             </div>
-            <p id="argo-note" class="footnote">Availability depends on the published evaluation pairs.</p>
-          </div>
+          </article>
+          
         </section>
 
         <!-- Tab 2: Compare -->
@@ -321,14 +330,14 @@
             <div class="inline-controls transect-controls">
               <div class="point-group">
                 <span class="point-label">Point A</span>
-                <input id="lat1" type="number" value="12" step="0.25" placeholder="Lat" class="modern-input">
-                <input id="lon1" type="number" value="82" step="0.25" placeholder="Lon" class="modern-input">
+                <input id="lat1" type="number" value="12" step="any" placeholder="Lat" class="modern-input">
+                <input id="lon1" type="number" value="82" step="any" placeholder="Lon" class="modern-input">
               </div>
               <div class="point-divider"><i class="fas fa-long-arrow-alt-right"></i></div>
               <div class="point-group">
                 <span class="point-label">Point B</span>
-                <input id="lat2" type="number" value="18" step="0.25" placeholder="Lat" class="modern-input">
-                <input id="lon2" type="number" value="92" step="0.25" placeholder="Lon" class="modern-input">
+                <input id="lat2" type="number" value="18" step="any" placeholder="Lat" class="modern-input">
+                <input id="lon2" type="number" value="92" step="any" placeholder="Lon" class="modern-input">
               </div>
               <button id="section-update" class="btn-primary"><i class="fas fa-draw-polygon"></i> Show cross-section</button>
             </div>
