@@ -65,3 +65,18 @@ function validateViewSelection(){if(currentTab==='time'){if(!$('start').value||!
  const ids=currentTab==='section'?['lat1','lon1','lat2','lon2']:currentTab==='explore'?['lat','lon']:[];for(const id of ids)if(invalid(id))throw Error('Enter coordinates inside the dataset: latitude 5–30°N and longitude 45–105°E.');
  fieldHelp.textContent=fieldGuides[$('variable').value];
 }
+
+// Custom coordinate stepping (0.25 increments via Arrow keys) for all coordinate inputs
+document.querySelectorAll('input[id^="lat"], input[id^="lon"], input[id^="time-lat"], input[id^="time-lon"]').forEach(el => {
+  el.addEventListener('keydown', e => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      let v = Number(el.value);
+      if (isNaN(v)) v = 0;
+      v += (e.key === 'ArrowUp' ? 0.25 : -0.25);
+      el.value = v.toFixed(2);
+      if(typeof safe === 'function' && typeof render === 'function') safe(render);
+    }
+  });
+});
+
