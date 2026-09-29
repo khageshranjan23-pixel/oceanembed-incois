@@ -475,7 +475,7 @@ body > .rail, body > #workspace { display: none; } /* Hide old root layout */
 @media(max-width:800px){.ultra-header{position:relative;top:auto}#workspace{scroll-margin-top:12px}.control-group #variable{max-width:100%}}
 .stat-box{flex-wrap:wrap}.sample-definition{flex-basis:100%;font-size:11px;line-height:1.7;color:#52677c;margin:0}.modern-stats .stat-info{min-width:0}
 
-/* Match route map height with explore map height */
-.route { height: 400px !important; }
-@media(min-width: 1650px) { .route { height: 465px !important; } }
-@media(max-width: 780px) { .route { height: 320px !important; } }
+/* Maintain map aspect ratio after widening layout */
+.map, .route { height: 500px !important; }
+@media(min-width: 1650px) { .map, .route { height: 580px !important; } }
+@media(max-width: 780px) { .map, .route { height: 350px !important; } }
