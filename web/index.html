@@ -175,24 +175,10 @@
         </nav>
         
         <!-- Recent Searches (Dynamic Quick Locations) -->
-        <div class="quick-locations" style="display: flex; align-items: center; margin-left: auto; overflow: hidden;">
-          <div id="recent-searches-container" style="display: flex; gap: 15px; overflow-x: auto; padding-bottom: 4px; max-width: 600px; scrollbar-width: thin; align-items: center;">
-            <!-- Arabian Sea Searches -->
-            <div id="arabian-sea-group" style="display: none; margin-bottom: 0;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <p style="font-size: 9px; color: #087e83; font-weight: 700; margin: 0; letter-spacing: 0.5px; white-space: nowrap;">ARABIAN SEA:</p>
-                <ul id="arabian-sea-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: row; gap: 6px;"></ul>
-              </div>
-            </div>
-            
-            <!-- Bay of Bengal Searches -->
-            <div id="bob-group" style="display: none; margin-bottom: 0;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <p style="font-size: 9px; color: #087e83; font-weight: 700; margin: 0; letter-spacing: 0.5px; white-space: nowrap;">BAY OF BENGAL:</p>
-                <ul id="bob-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: row; gap: 6px;"></ul>
-              </div>
-            </div>
-          </div>
+        <div class="quick-locations" style="display: flex; align-items: center; margin-left: auto; overflow: hidden; gap: 12px; display: none;">
+          <p class="rail-label" style="margin-top: 0; margin-bottom: 0; padding-left: 5px; flex-shrink: 0; color: #087e83; font-weight: 700; font-size: 10px; letter-spacing: 0.5px;">RECENT SEARCHES</p>
+          <ul id="recent-searches-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: row; gap: 8px; overflow-x: auto; padding-bottom: 4px; max-width: 700px; scrollbar-width: thin; align-items: center;"></ul>
+        </div>
           <script>
             function saveRecentSearch() {
               const latInput = document.getElementById('lat');
@@ -227,19 +213,14 @@
               localStorage.setItem('oceanembed_recent_searches', JSON.stringify(searches));
               renderRecentSearches();
             }
-
+            
             function renderRecentSearches() {
               const searches = JSON.parse(localStorage.getItem('oceanembed_recent_searches') || '[]');
-              const arabianList = document.getElementById('arabian-sea-list');
-              const bobList = document.getElementById('bob-list');
+              const list = document.getElementById('recent-searches-list');
               
-              if (!arabianList || !bobList) return;
+              if (!list) return;
               
-              arabianList.innerHTML = '';
-              bobList.innerHTML = '';
-              
-              let arabianCount = 0;
-              let bobCount = 0;
+              list.innerHTML = '';
 
               searches.forEach(s => {
                 const li = document.createElement('li');
@@ -258,17 +239,12 @@
 
                 li.innerHTML = `<button class="text-button hover-lift" onclick="${clickScript}" style="text-align: left; padding: 6px 10px; font-size: 11px; background: ${bg}; border: 1px solid ${border}; border-radius: 8px; width: max-content; transition: all 0.2s; line-height: 1.2; flex-shrink: 0;"><div style="font-weight: 600; color: #1e293b;"><i class="fas fa-map-marker-alt" style="color: ${iconColor}; margin-right: 6px;"></i> ${s.name}</div>${dateHtml}</button>`;
                 
-                if (s.region === 'arabian') {
-                  arabianList.appendChild(li);
-                  arabianCount++;
-                } else {
-                  bobList.appendChild(li);
-                  bobCount++;
-                }
+                list.appendChild(li);
               });
-
-              document.getElementById('arabian-sea-group').style.display = arabianCount > 0 ? 'block' : 'none';
-              document.getElementById('bob-group').style.display = bobCount > 0 ? 'block' : 'none';
+              
+              // Show or hide the whole block depending on history length
+              const quickLocs = document.querySelector('.quick-locations');
+              if (quickLocs) quickLocs.style.display = searches.length > 0 ? 'flex' : 'none';
             }
 
             // Bind to point button clicks
