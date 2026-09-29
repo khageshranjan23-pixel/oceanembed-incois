@@ -53,11 +53,3 @@
   display: none !important;
 }
 
-/* Dropdown Hover Effects */
-.quick-locations:hover #recent-searches-container {
-  display: block !important;
-}
-
-.recent-searches-trigger:hover {
-  background: #e2eff9 !important;
-}
