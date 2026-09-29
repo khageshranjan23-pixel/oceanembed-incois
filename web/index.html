@@ -6,7 +6,7 @@
   <title>INCOIS | OceanEmbed Research Portal</title>
   <meta name="description" content="Official INCOIS OceanEmbed-NIO Subsurface Reconstruction Portal.">
   <link rel="stylesheet" href="/assets/style.css">
-  <link rel="stylesheet" href="/assets/incois.css?v=sih17">
+  <link rel="stylesheet" href="/assets/incois.css?v=sih18">
   <link rel="icon" href="https://incois.gov.in/site/incois-images/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <!-- Government preferred fonts: Merriweather for serif headings, Inter for modern UI -->
@@ -59,9 +59,7 @@
     <nav class="mega-nav">
       <ul class="nav-links">
         <li class="nav-item"><a href="#"><i class="fas fa-home"></i></a></li>
-        <li class="nav-item dropdown">
-          <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
-        </li>
+        <li class="nav-item"><a href="#" onclick="document.getElementById('aboutModal').style.display='flex'; return false;">About Us</a></li>
         <li class="nav-item dropdown">
           <a href="#">Ocean Observations <i class="fas fa-chevron-down"></i></a>
         </li>
@@ -492,5 +490,57 @@
       document.querySelectorAll('.card, .reveal-up').forEach(el => observer.observe(el));
     });
   </script>
+  <!-- About Us Modal -->
+  <div id="aboutModal" class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+      <button class="modal-close" onclick="document.getElementById('aboutModal').style.display='none'"><i class="fas fa-times"></i></button>
+      <h2>Team VarunNetra - OceanEmbed</h2>
+      <p>SMART INDIA HACKATHON 2026</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://ui-avatars.com/api/?name=Khagesh+Ranjan&background=087e83&color=fff&size=150" class="team-img" alt="Khagesh Ranjan">
+          <div class="team-role">Leader</div>
+          <div class="team-name">Khagesh Ranjan</div>
+          <div class="team-degree">B.Tech + M.Tech (Dual Degree)<br>in CSE &amp; AI</div>
+          <a href="https://www.linkedin.com/in/khagesh-ranjan-986721324/" target="_blank" class="team-social"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="team-card">
+          <img src="https://ui-avatars.com/api/?name=Sudipto+Ghosh&background=087e83&color=fff&size=150" class="team-img" alt="Sudipto Ghosh">
+          <div class="team-role">Member</div>
+          <div class="team-name">Sudipto Ghosh</div>
+          <div class="team-degree">B.Tech + M.Tech (Dual Degree)<br>in CSE &amp; AI</div>
+          <a href="https://www.linkedin.com/in/sudipto-ghosh-486269346/" target="_blank" class="team-social"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="team-card">
+          <img src="https://ui-avatars.com/api/?name=Ayush+Rao&background=087e83&color=fff&size=150" class="team-img" alt="Ayush Rao">
+          <div class="team-role">Member</div>
+          <div class="team-name">Ayush Rao</div>
+          <div class="team-degree">B.Tech in<br>Information Technology</div>
+          <a href="https://www.linkedin.com/in/ayush-rao-5359bb335/" target="_blank" class="team-social"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="team-card">
+          <img src="https://ui-avatars.com/api/?name=Shivanshu+Tripathi&background=087e83&color=fff&size=150" class="team-img" alt="Shivanshu Tripathi">
+          <div class="team-role">Member</div>
+          <div class="team-name">Shivanshu Tripathi</div>
+          <div class="team-degree">B.Tech + M.Tech (Dual Degree)<br>in CSE &amp; AI</div>
+          <a href="https://www.linkedin.com/in/shivanshu-tripathi-254876331/" target="_blank" class="team-social"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="team-card">
+          <img src="https://ui-avatars.com/api/?name=Satyam+Gupta&background=087e83&color=fff&size=150" class="team-img" alt="Satyam Gupta">
+          <div class="team-role">Member</div>
+          <div class="team-name">Satyam Gupta</div>
+          <div class="team-degree">B.Tech + M.Tech (Dual Degree)<br>in CSE &amp; AI</div>
+          <a href="https://www.linkedin.com/in/satyam-gupta-2a1021324/" target="_blank" class="team-social"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="team-card">
+          <img src="https://ui-avatars.com/api/?name=Muskan+Sahu&background=087e83&color=fff&size=150" class="team-img" alt="Muskan Sahu">
+          <div class="team-role">Member</div>
+          <div class="team-name">Muskan Sahu</div>
+          <div class="team-degree">B.Tech in<br>Information Technology</div>
+          <a href="https://www.linkedin.com/in/muskan-sahu-717162332/" target="_blank" class="team-social"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
