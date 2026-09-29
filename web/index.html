@@ -69,7 +69,7 @@
         </li>
         <li class="nav-item active" id="nav-portal"><a href="#" onclick="showPortalView(); return false;">OceanEmbed Portal <div class="glow-dot"></div></a></li>
 
-        <li class="nav-item"><a href="#">Contact Us</a></li>
+        <li class="nav-item" id="nav-contact"><a href="#" onclick="showContactView(); return false;">Contact Us</a></li>
       </ul>
       <div class="search-box">
         <input type="text" placeholder="Search Portal...">
@@ -574,12 +574,64 @@
     </div>
   </div>
 
+  <!-- Contact Us View -->
+  <div id="contact-view" style="display: none; padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 50px;">
+      <h2 style="font-size: 36px; color: #1a5594; margin-bottom: 10px; font-family: 'Merriweather', serif;">Contact Us</h2>
+      <p style="color: #52677c; font-size: 15px; line-height: 1.6; max-width: 600px; margin: 20px auto 0;">
+        <strong>Rajiv Gandhi Institute of Petroleum Technology</strong><br>
+        Bahadurpur, Jais, Post Harbanshganj,<br>
+        Amethi - 229304, Uttar Pradesh
+      </p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="/assets/khagesh.png?v=2" class="team-img" alt="Khagesh Ranjan">
+        <div class="team-role">Leader</div>
+        <div class="team-name">Khagesh Ranjan</div>
+        <a href="mailto:kahgesh-24cs2021@rgipt.ac.in" style="color: #087e83; font-size: 12px; font-weight: 600; text-decoration: none;">kahgesh-24cs2021@rgipt.ac.in</a>
+      </div>
+      <div class="team-card">
+        <img src="/assets/sudipto.png?v=2" class="team-img" alt="Sudipto Ghosh">
+        <div class="team-role">Member</div>
+        <div class="team-name">Sudipto Ghosh</div>
+        <a href="mailto:sudipto-24cs2037@rgipt.ac.in" style="color: #087e83; font-size: 12px; font-weight: 600; text-decoration: none;">sudipto-24cs2037@rgipt.ac.in</a>
+      </div>
+      <div class="team-card">
+        <img src="/assets/ayush.png?v=2" class="team-img" alt="Ayush Rao">
+        <div class="team-role">Member</div>
+        <div class="team-name">Ayush Rao</div>
+        <a href="mailto:ayush-24it3013@rgipt.ac.in" style="color: #087e83; font-size: 12px; font-weight: 600; text-decoration: none;">ayush-24it3013@rgipt.ac.in</a>
+      </div>
+      <div class="team-card">
+        <img src="/assets/shivanshu.png?v=2" class="team-img" alt="Shivanshu Tripathi">
+        <div class="team-role">Member</div>
+        <div class="team-name">Shivanshu Tripathi</div>
+        <a href="mailto:shivanshu-24cs2036@rgipt.ac.in" style="color: #087e83; font-size: 12px; font-weight: 600; text-decoration: none;">shivanshu-24cs2036@rgipt.ac.in</a>
+      </div>
+      <div class="team-card">
+        <img src="/assets/satyam.png?v=2" class="team-img" alt="Satyam Gupta">
+        <div class="team-role">Member</div>
+        <div class="team-name">Satyam Gupta</div>
+        <a href="mailto:satyam-24cs2032@rgipt.ac.in" style="color: #087e83; font-size: 12px; font-weight: 600; text-decoration: none;">satyam-24cs2032@rgipt.ac.in</a>
+      </div>
+      <div class="team-card">
+        <img src="/assets/muskan.png?v=3" class="team-img" alt="Muskan Sahu">
+        <div class="team-role">Member</div>
+        <div class="team-name">Muskan Sahu</div>
+        <a href="mailto:muskan-24it3036@rgipt.ac.in" style="color: #087e83; font-size: 12px; font-weight: 600; text-decoration: none;">muskan-24it3036@rgipt.ac.in</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     function showAboutView() {
       document.getElementById('portal-view').style.display = 'none';
+      document.getElementById('contact-view').style.display = 'none';
       document.getElementById('about-view').style.display = 'block';
       document.getElementById('nav-about').classList.add('active');
       document.getElementById('nav-portal').classList.remove('active');
+      document.getElementById('nav-contact').classList.remove('active');
       const glowDot = document.querySelector('#nav-portal .glow-dot');
       if(glowDot) glowDot.style.display = 'none';
     }
@@ -587,10 +639,23 @@
     function showPortalView() {
       document.getElementById('portal-view').style.display = 'block';
       document.getElementById('about-view').style.display = 'none';
+      document.getElementById('contact-view').style.display = 'none';
       document.getElementById('nav-portal').classList.add('active');
       document.getElementById('nav-about').classList.remove('active');
+      document.getElementById('nav-contact').classList.remove('active');
       const glowDot = document.querySelector('#nav-portal .glow-dot');
       if(glowDot) glowDot.style.display = 'block';
+    }
+
+    function showContactView() {
+      document.getElementById('portal-view').style.display = 'none';
+      document.getElementById('about-view').style.display = 'none';
+      document.getElementById('contact-view').style.display = 'block';
+      document.getElementById('nav-contact').classList.add('active');
+      document.getElementById('nav-portal').classList.remove('active');
+      document.getElementById('nav-about').classList.remove('active');
+      const glowDot = document.querySelector('#nav-portal .glow-dot');
+      if(glowDot) glowDot.style.display = 'none';
     }
   </script>
 
