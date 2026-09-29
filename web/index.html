@@ -173,34 +173,91 @@
           </button>
         </nav>
         
-        <!-- Quick Saved Locations -->
+        <!-- Recent Searches (Dynamic Quick Locations) -->
         <div class="quick-locations" style="margin-top: 25px; padding: 0 15px;">
-          <p class="rail-label" style="margin-top: 0; margin-bottom: 8px; padding-left: 5px;">QUICK LOCATIONS</p>
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;">
-            <li><button class="text-button hover-lift" onclick="document.querySelector('button[data-tab=\'explore\']').click(); document.getElementById('lat').value=15; document.getElementById('lon').value=90; document.getElementById('point').click();" style="text-align: left; padding: 8px 12px; font-size: 11px; background: #eef5fa; border: 1px solid #c9dfed; border-radius: 8px; width: 100%; transition: all 0.2s;"><i class="fas fa-map-marker-alt" style="color: #087e83; margin-right: 8px;"></i> Bay of Bengal</button></li>
-            <li><button class="text-button hover-lift" onclick="document.querySelector('button[data-tab=\'explore\']').click(); document.getElementById('lat').value=15; document.getElementById('lon').value=65; document.getElementById('point').click();" style="text-align: left; padding: 8px 12px; font-size: 11px; background: #eef5fa; border: 1px solid #c9dfed; border-radius: 8px; width: 100%; transition: all 0.2s;"><i class="fas fa-map-marker-alt" style="color: #087e83; margin-right: 8px;"></i> Arabian Sea</button></li>
-            <li><button class="text-button hover-lift" onclick="document.querySelector('button[data-tab=\'explore\']').click(); document.getElementById('lat').value=0; document.getElementById('lon').value=80; document.getElementById('point').click();" style="text-align: left; padding: 8px 12px; font-size: 11px; background: #eef5fa; border: 1px solid #c9dfed; border-radius: 8px; width: 100%; transition: all 0.2s;"><i class="fas fa-map-marker-alt" style="color: #087e83; margin-right: 8px;"></i> Equatorial IO</button></li>
-          </ul>
-        </div>
-
-        <!-- Live Dataset Metrics -->
-        <div class="live-metrics" style="margin-top: 25px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; margin-left: 15px; margin-right: 15px;">
-          <p class="rail-label" style="margin-top: 0; padding-left: 0; color: #64748b; margin-bottom: 12px;"><i class="fas fa-chart-line" style="margin-right: 4px;"></i> LIVE METRICS</p>
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #edf2f7; padding-bottom: 6px;">
-              <span style="font-size: 11px; color: #475569; font-weight: 600;">Data points</span>
-              <span style="font-size: 11px; color: #087e83; font-weight: 700;">1.4 Million</span>
+          <p class="rail-label" style="margin-top: 0; margin-bottom: 8px; padding-left: 5px;">RECENT SEARCHES</p>
+          
+          <div id="recent-searches-container">
+            <!-- Arabian Sea Searches -->
+            <div id="arabian-sea-group" style="display: none; margin-bottom: 12px;">
+              <p style="font-size: 9px; color: #087e83; font-weight: 700; margin: 0 0 6px 5px; letter-spacing: 0.5px;">ARABIAN SEA</p>
+              <ul id="arabian-sea-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;"></ul>
             </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #edf2f7; padding-bottom: 6px;">
-              <span style="font-size: 11px; color: #475569; font-weight: 600;">Depth range</span>
-              <span style="font-size: 11px; color: #087e83; font-weight: 700;">0–1000m</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 11px; color: #475569; font-weight: 600;">Last updated</span>
-              <span style="font-size: 11px; color: #087e83; font-weight: 700;" id="live-date">Today</span>
-              <script>document.getElementById('live-date').textContent = new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'});</script>
+            
+            <!-- Bay of Bengal Searches -->
+            <div id="bob-group" style="display: none; margin-bottom: 12px;">
+              <p style="font-size: 9px; color: #087e83; font-weight: 700; margin: 0 0 6px 5px; letter-spacing: 0.5px;">BAY OF BENGAL</p>
+              <ul id="bob-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;"></ul>
             </div>
           </div>
+          <script>
+            function saveRecentSearch() {
+              const latInput = document.getElementById('lat');
+              const lonInput = document.getElementById('lon');
+              if (!latInput || !lonInput) return;
+              
+              const lat = parseFloat(latInput.value);
+              const lon = parseFloat(lonInput.value);
+              if (isNaN(lat) || isNaN(lon)) return;
+              
+              // Reference for bifurcation: Longitude 77.5E roughly splits Arabian Sea (West) and Bay of Bengal (East) around India
+              const region = lon < 77.5 ? 'arabian' : 'bob';
+              const name = `Lat ${lat.toFixed(2)}°N, Lon ${lon.toFixed(2)}°E`;
+              
+              let searches = JSON.parse(localStorage.getItem('oceanembed_recent_searches') || '[]');
+              
+              // Remove if already exists to move it to the top
+              searches = searches.filter(s => !(s.lat === lat && s.lon === lon));
+              
+              // Add to beginning
+              searches.unshift({ lat, lon, region, name });
+              
+              // Keep only last 15 total across both categories
+              if (searches.length > 15) searches = searches.slice(0, 15);
+              
+              localStorage.setItem('oceanembed_recent_searches', JSON.stringify(searches));
+              renderRecentSearches();
+            }
+
+            function renderRecentSearches() {
+              const searches = JSON.parse(localStorage.getItem('oceanembed_recent_searches') || '[]');
+              const arabianList = document.getElementById('arabian-sea-list');
+              const bobList = document.getElementById('bob-list');
+              
+              if (!arabianList || !bobList) return;
+              
+              arabianList.innerHTML = '';
+              bobList.innerHTML = '';
+              
+              let arabianCount = 0;
+              let bobCount = 0;
+
+              searches.forEach(s => {
+                const li = document.createElement('li');
+                li.innerHTML = `<button class="text-button hover-lift" onclick="document.querySelector('button[data-tab=\\'explore\\']').click(); document.getElementById('lat').value=${s.lat}; document.getElementById('lon').value=${s.lon}; document.getElementById('point').click();" style="text-align: left; padding: 8px 12px; font-size: 11px; background: #eef5fa; border: 1px solid #c9dfed; border-radius: 8px; width: 100%; transition: all 0.2s;"><i class="fas fa-map-marker-alt" style="color: #087e83; margin-right: 8px;"></i> ${s.name}</button>`;
+                
+                if (s.region === 'arabian') {
+                  arabianList.appendChild(li);
+                  arabianCount++;
+                } else {
+                  bobList.appendChild(li);
+                  bobCount++;
+                }
+              });
+
+              document.getElementById('arabian-sea-group').style.display = arabianCount > 0 ? 'block' : 'none';
+              document.getElementById('bob-group').style.display = bobCount > 0 ? 'block' : 'none';
+            }
+
+            // Bind to point button clicks
+            document.addEventListener('DOMContentLoaded', () => {
+              const pointBtn = document.getElementById('point');
+              if (pointBtn) {
+                pointBtn.addEventListener('click', saveRecentSearch);
+              }
+              renderRecentSearches();
+            });
+          </script>
         </div>
 
         <div class="rail-bottom">
