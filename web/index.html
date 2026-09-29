@@ -175,20 +175,22 @@
         </nav>
         
         <!-- Recent Searches (Dynamic Quick Locations) -->
-        <div class="quick-locations" style="position: relative; margin-left: auto;">
-          <button class="recent-searches-trigger" style="background: #f1f6fc; color: #1a5594; border: 1px solid #d8e4f1; padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s;"><i class="fas fa-history"></i> Recent Searches <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 4px;"></i></button>
-          
-          <div id="recent-searches-container" style="overflow-y: auto; max-height: 400px; padding-right: 4px; display: none; position: absolute; top: calc(100% + 8px); right: 0; width: 340px; background: white; border: 1px solid #eaedf3; border-radius: 12px; box-shadow: 0 10px 40px rgba(12, 45, 72, 0.15); padding: 15px; z-index: 100;">
+        <div class="quick-locations" style="display: flex; align-items: center; margin-left: auto; overflow: hidden;">
+          <div id="recent-searches-container" style="display: flex; gap: 15px; overflow-x: auto; padding-bottom: 4px; max-width: 600px; scrollbar-width: thin; align-items: center;">
             <!-- Arabian Sea Searches -->
-            <div id="arabian-sea-group" style="display: none; margin-bottom: 12px;">
-              <p style="font-size: 9px; color: #087e83; font-weight: 700; margin: 0 0 6px 5px; letter-spacing: 0.5px;">ARABIAN SEA</p>
-              <ul id="arabian-sea-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;"></ul>
+            <div id="arabian-sea-group" style="display: none; margin-bottom: 0;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <p style="font-size: 9px; color: #087e83; font-weight: 700; margin: 0; letter-spacing: 0.5px; white-space: nowrap;">ARABIAN SEA:</p>
+                <ul id="arabian-sea-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: row; gap: 6px;"></ul>
+              </div>
             </div>
             
             <!-- Bay of Bengal Searches -->
-            <div id="bob-group" style="display: none; margin-bottom: 12px;">
-              <p style="font-size: 9px; color: #087e83; font-weight: 700; margin: 0 0 6px 5px; letter-spacing: 0.5px;">BAY OF BENGAL</p>
-              <ul id="bob-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;"></ul>
+            <div id="bob-group" style="display: none; margin-bottom: 0;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <p style="font-size: 9px; color: #087e83; font-weight: 700; margin: 0; letter-spacing: 0.5px; white-space: nowrap;">BAY OF BENGAL:</p>
+                <ul id="bob-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: row; gap: 6px;"></ul>
+              </div>
             </div>
           </div>
           <script>
@@ -254,7 +256,7 @@
                 if (s.depth) clickScript += ` const dp = document.getElementById('depth'); if (dp) dp.value='${s.depth}';`;
                 clickScript += ` document.getElementById('point').click();`;
 
-                li.innerHTML = `<button class="text-button hover-lift" onclick="${clickScript}" style="text-align: left; padding: 10px 12px; font-size: 11px; background: ${bg}; border: 1px solid ${border}; border-radius: 8px; width: 100%; transition: all 0.2s; line-height: 1.3;"><div style="font-weight: 600; color: #1e293b;"><i class="fas fa-map-marker-alt" style="color: ${iconColor}; margin-right: 6px;"></i> ${s.name}</div>${dateHtml}</button>`;
+                li.innerHTML = `<button class="text-button hover-lift" onclick="${clickScript}" style="text-align: left; padding: 6px 10px; font-size: 11px; background: ${bg}; border: 1px solid ${border}; border-radius: 8px; width: max-content; transition: all 0.2s; line-height: 1.2; flex-shrink: 0;"><div style="font-weight: 600; color: #1e293b;"><i class="fas fa-map-marker-alt" style="color: ${iconColor}; margin-right: 6px;"></i> ${s.name}</div>${dateHtml}</button>`;
                 
                 if (s.region === 'arabian') {
                   arabianList.appendChild(li);
