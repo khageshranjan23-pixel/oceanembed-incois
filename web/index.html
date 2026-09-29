@@ -194,11 +194,17 @@
             function saveRecentSearch() {
               const latInput = document.getElementById('lat');
               const lonInput = document.getElementById('lon');
+              const dateInput = document.getElementById('date');
+              const depthInput = document.getElementById('depth');
+              
               if (!latInput || !lonInput) return;
               
               const lat = parseFloat(latInput.value);
               const lon = parseFloat(lonInput.value);
               if (isNaN(lat) || isNaN(lon)) return;
+              
+              const dateVal = dateInput && dateInput.value ? dateInput.value : '';
+              const depthVal = depthInput && depthInput.value ? depthInput.value : '';
               
               // Reference for bifurcation: Longitude 77.5E roughly splits Arabian Sea (West) and Bay of Bengal (East) around India
               const region = lon < 77.5 ? 'arabian' : 'bob';
@@ -207,13 +213,13 @@
               let searches = JSON.parse(localStorage.getItem('oceanembed_recent_searches') || '[]');
               
               // Remove if already exists to move it to the top
-              searches = searches.filter(s => !(s.lat === lat && s.lon === lon));
+              searches = searches.filter(s => !(s.lat === lat && s.lon === lon && s.date === dateVal && s.depth === depthVal));
               
               // Add to beginning
-              searches.unshift({ lat, lon, region, name });
+              searches.unshift({ lat, lon, date: dateVal, depth: depthVal, region, name });
               
-              // Keep only last 15 total across both categories
-              if (searches.length > 15) searches = searches.slice(0, 15);
+              // Keep only last 10 total across both categories to avoid overflowing the left sidebar
+              if (searches.length > 10) searches = searches.slice(0, 10);
               
               localStorage.setItem('oceanembed_recent_searches', JSON.stringify(searches));
               renderRecentSearches();
@@ -234,7 +240,20 @@
 
               searches.forEach(s => {
                 const li = document.createElement('li');
-                li.innerHTML = `<button class="text-button hover-lift" onclick="document.querySelector('button[data-tab=\\'explore\\']').click(); document.getElementById('lat').value=${s.lat}; document.getElementById('lon').value=${s.lon}; document.getElementById('point').click();" style="text-align: left; padding: 8px 12px; font-size: 11px; background: #eef5fa; border: 1px solid #c9dfed; border-radius: 8px; width: 100%; transition: all 0.2s;"><i class="fas fa-map-marker-alt" style="color: #087e83; margin-right: 8px;"></i> ${s.name}</button>`;
+                
+                const dateHtml = s.date ? `<span style="display:block; margin-top: 4px; font-size: 10px; color: #64748b;"><i class="fas fa-calendar-alt"></i> ${s.date} ${s.depth ? '· ' + s.depth + 'm' : ''}</span>` : '';
+                
+                // Color themes based on region (Arabian Sea = pale green, Bay of Bengal = pale blue)
+                const bg = s.region === 'arabian' ? '#ecfdf5' : '#eff6ff';
+                const border = s.region === 'arabian' ? '#a7f3d0' : '#bfdbfe';
+                const iconColor = s.region === 'arabian' ? '#059669' : '#2563eb';
+                
+                let clickScript = `document.querySelector('button[data-tab=\\'explore\\']').click(); document.getElementById('lat').value=${s.lat}; document.getElementById('lon').value=${s.lon};`;
+                if (s.date) clickScript += ` const d = document.getElementById('date'); if (d) d.value='${s.date}';`;
+                if (s.depth) clickScript += ` const dp = document.getElementById('depth'); if (dp) dp.value='${s.depth}';`;
+                clickScript += ` document.getElementById('point').click();`;
+
+                li.innerHTML = `<button class="text-button hover-lift" onclick="${clickScript}" style="text-align: left; padding: 10px 12px; font-size: 11px; background: ${bg}; border: 1px solid ${border}; border-radius: 8px; width: 100%; transition: all 0.2s; line-height: 1.3;"><div style="font-weight: 600; color: #1e293b;"><i class="fas fa-map-marker-alt" style="color: ${iconColor}; margin-right: 6px;"></i> ${s.name}</div>${dateHtml}</button>`;
                 
                 if (s.region === 'arabian') {
                   arabianList.appendChild(li);
