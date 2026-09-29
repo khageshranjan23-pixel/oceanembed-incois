@@ -435,6 +435,7 @@ body > .rail, body > #workspace { display: none; } /* Hide old root layout */
 /* Team Tab Styles */
 .team-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+  max-width: 950px; margin: 0 auto;
 }
 .team-card {
   background: #f8fafc; border: 1px solid #d9e4ed; border-radius: 12px;
