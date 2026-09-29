@@ -1,0 +1,63 @@
+/* Overrides for Horizontal Top Navbar */
+.app-container {
+  flex-direction: column !important;
+}
+
+.app-container .rail {
+  width: 100% !important;
+  height: auto !important;
+  position: relative !important;
+  border-right: none !important;
+  border-bottom: 1px solid #eaedf3 !important;
+  padding: 12px 25px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: wrap !important;
+  gap: 20px !important;
+  z-index: 20 !important;
+}
+
+.app-container .rail .brand {
+  margin-bottom: 0 !important;
+}
+
+.app-container .rail .rail-label {
+  display: none !important;
+}
+
+.app-container .rail .staggered-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 0 !important;
+  flex-grow: 1 !important;
+}
+
+.app-container .rail .staggered-nav button {
+  padding: 10px 14px !important;
+}
+
+.app-container .rail .staggered-nav button.active:before {
+  display: none !important;
+}
+
+.app-container .rail .staggered-nav button.active {
+  background: #1a5594 !important;
+  border-radius: 8px !important;
+}
+
+.app-container .rail .rail-bottom {
+  display: none !important;
+}
+
+/* Dropdown Hover Effects */
+.quick-locations:hover #recent-searches-container {
+  display: block !important;
+}
+
+.recent-searches-trigger:hover {
+  background: #e2eff9 !important;
+}
