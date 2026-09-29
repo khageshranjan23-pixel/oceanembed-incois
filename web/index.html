@@ -174,10 +174,10 @@
         </nav>
         
         <!-- Recent Searches (Dynamic Quick Locations) -->
-        <div class="quick-locations" style="margin-top: 25px; padding: 0 15px;">
-          <p class="rail-label" style="margin-top: 0; margin-bottom: 8px; padding-left: 5px;">RECENT SEARCHES</p>
+        <div class="quick-locations" style="margin-top: 25px; padding: 0 15px; display: flex; flex-direction: column; flex-grow: 1; min-height: 0;">
+          <p class="rail-label" style="margin-top: 0; margin-bottom: 8px; padding-left: 5px; flex-shrink: 0;">RECENT SEARCHES</p>
           
-          <div id="recent-searches-container">
+          <div id="recent-searches-container" style="overflow-y: auto; max-height: 55vh; padding-right: 4px;">
             <!-- Arabian Sea Searches -->
             <div id="arabian-sea-group" style="display: none; margin-bottom: 12px;">
               <p style="font-size: 9px; color: #087e83; font-weight: 700; margin: 0 0 6px 5px; letter-spacing: 0.5px;">ARABIAN SEA</p>
@@ -218,8 +218,8 @@
               // Add to beginning
               searches.unshift({ lat, lon, date: dateVal, depth: depthVal, region, name });
               
-              // Keep only last 10 total across both categories to avoid overflowing the left sidebar
-              if (searches.length > 10) searches = searches.slice(0, 10);
+              // Keep only last 30 total across both categories to fill the space
+              if (searches.length > 30) searches = searches.slice(0, 30);
               
               localStorage.setItem('oceanembed_recent_searches', JSON.stringify(searches));
               renderRecentSearches();
