@@ -11,6 +11,28 @@ ROOT=Path(os.environ.get('OCEANEMBED_RESULTS','outputs/smoke'))
 WEB=Path(__file__).resolve().parents[1]/'web'
 app=FastAPI(title='OceanEmbed research prototype')
 
+import threading, time
+from urllib.request import urlopen
+from urllib.error import URLError
+
+_KEEP_ALIVE_INTERVAL = int(os.environ.get('KEEP_ALIVE_SECONDS', 600))
+
+def _keep_alive():
+    port = int(os.environ.get('PORT', 8000))
+    url = f'http://127.0.0.1:{port}/health'
+    time.sleep(15)
+    while True:
+        try:
+            urlopen(url, timeout=10).read()
+        except (URLError, OSError, Exception):
+            pass
+        time.sleep(_KEEP_ALIVE_INTERVAL)
+
+@app.on_event("startup")
+def start_keep_alive():
+    t = threading.Thread(target=_keep_alive, daemon=True)
+    t.start()
+
 def clean(v):
     if isinstance(v,np.ndarray):return clean(v.tolist())
     if isinstance(v,list):return [clean(x) for x in v]

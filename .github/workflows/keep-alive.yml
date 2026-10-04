@@ -1,0 +1,33 @@
+# Keep the Render free-tier service awake by pinging /health every 10 minutes.
+# GitHub Actions cron is free for public repos.
+# This acts as an external backup pinger so if the service sleeps or restarts,
+# the next cron tick wakes it back up within ≤10 minutes.
+
+name: Keep Alive
+
+on:
+  schedule:
+    # Every 10 minutes, 24/7
+    - cron: '*/10 * * * *'
+  workflow_dispatch: {}   # allow manual trigger
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Ping /health
+        run: |
+          for i in 1 2 3; do
+            STATUS=$(curl -s -o /dev/null -w '%{http_code}' \
+              --max-time 30 \
+              https://oceanembed-incois.onrender.com/health) || true
+            echo "Attempt $i: HTTP $STATUS"
+            if [ "$STATUS" = "200" ]; then
+              echo "Service is awake ✓"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "Service did not respond after 3 attempts"
+          exit 1
